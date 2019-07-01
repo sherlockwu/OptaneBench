@@ -1,0 +1,26 @@
+; fio-rand-write.job for fiotest
+
+[global]
+name=fio-rand-write
+ioengine=libaio
+direct=1
+thread=1
+buffered=0
+randrepeat=0
+ramp_time=0
+norandommap
+refill_buffers
+log_max_value=1
+group_reporting
+percentile_list=25.0:50.0:75.0:99.0
+filename=/dev/nvme1n1
+
+
+[file1]
+;stonewall
+bs=4k
+iodepth=1
+numjobs=4
+rw=randwrite
+time_based
+runtime=20

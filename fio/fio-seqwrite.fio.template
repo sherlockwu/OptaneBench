@@ -1,0 +1,26 @@
+; fio-seqwrite.job for fiotest
+
+[global]
+name=fio-seq-write
+ioengine=libaio
+direct=1
+thread=1
+buffered=0
+randrepeat=0
+ramp_time=0
+norandommap
+refill_buffers
+offset_increment=100g
+log_max_value=1
+group_reporting
+percentile_list=50.0:99.0
+filename=/dev/nvme1n1
+
+
+[stream1]
+bs=4k
+iodepth=1
+numjobs=1
+rw=write
+time_based
+runtime=20
