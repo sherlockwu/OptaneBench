@@ -1,0 +1,25 @@
+; trim all data
+
+[global]
+name=fio-trim
+ioengine=libaio
+direct=1
+thread=1
+buffered=0
+randrepeat=0
+ramp_time=0
+norandommap
+refill_buffers
+log_max_value=1
+group_reporting
+percentile_list=50.0:99.0
+filename=/dev/nvme1n1
+
+[preconditioning]
+stonewall
+size=100%
+bs=4m
+iodepth=16
+numjobs=1
+rw=trim
+
